@@ -1,0 +1,24 @@
+# ESP-IDF build output
+/build/
+/cmake-build-*/
+
+# VSCode
+.vscode/
+
+# CMake generated stuff
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+install_manifest.txt
+
+# Binary / artifact outputs
+*.bin
+*.elf
+*.map
+*.lst
+*.log
+*.dmp
+
+# Python virtual envs
+.env/
+venv/
