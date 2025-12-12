@@ -1,0 +1,299 @@
+�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x18 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x15a0
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xd20
+load:0x403cb700,len:0x2f00
+entry 0x403c8928
+[0;32mI (27) boot: ESP-IDF v5.4.1-dirty 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Dec 11 2025 18:53:04[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (28) boot: chip revision: v0.2[0m
+[0;32mI (30) boot: efuse block revision: v1.3[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (38) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (45) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (52) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (65) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (78) boot: End of partition table[0m
+[0;32mI (82) esp_image: segment 0: paddr=00010020 vaddr=3c040020 size=139c4h ( 80324) map[0m
+[0;32mI (103) esp_image: segment 1: paddr=000239ec vaddr=3fc93d00 size=02ad0h ( 10960) load[0m
+[0;32mI (106) esp_image: segment 2: paddr=000264c4 vaddr=40374000 size=09b54h ( 39764) load[0m
+[0;32mI (116) esp_image: segment 3: paddr=00030020 vaddr=42000020 size=3c54ch (247116) map[0m
+[0;32mI (160) esp_image: segment 4: paddr=0006c574 vaddr=4037db54 size=06144h ( 24900) load[0m
+[0;32mI (165) esp_image: segment 5: paddr=000726c0 vaddr=600fe100 size=0001ch (    28) load[0m
+[0;32mI (172) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (172) boot: Disabling RNG early entropy source...[0m
+[0;32mI (185) cpu_start: Multicore app[0m
+[0;32mI (194) cpu_start: Pro cpu start user code[0m
+[0;32mI (194) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (194) app_init: Application information:[0m
+[0;32mI (194) app_init: Project name:     sim7670_ppp_uart[0m
+[0;32mI (199) app_init: App version:      1[0m
+[0;32mI (202) app_init: Compile time:     Dec 11 2025 18:52:58[0m
+[0;32mI (207) app_init: ELF file SHA256:  a89f4e69e...[0m
+[0;32mI (212) app_init: ESP-IDF:          v5.4.1-dirty[0m
+[0;32mI (216) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (220) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (224) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (228) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (234) heap_init: At 3FC97C08 len 00051B08 (326 KiB): RAM[0m
+[0;32mI (239) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (244) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (249) heap_init: At 600FE11C len 00001ECC (7 KiB): RTCRAM[0m
+[0;32mI (256) spi_flash: detected chip: winbond[0m
+[0;32mI (258) spi_flash: flash io: dio[0m
+[0;33mW (261) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (274) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (280) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (287) main_task: Started on CPU0[0m
+[0;32mI (307) main_task: Calling app_main()[0m
+[0;32mI (317) SIM7670_PPP_UART: SIM7670 PPP UART demo (Stage 2: minimal PPP init)[0m
+[0;32mI (317) SIM7670_PPP_UART: UART for modem initialized: UART1, TX=18, RX=17, 115200 baud[0m
+[0;32mI (317) main_task: Returned from app_main()[0m
+[0;32mI (60317) SIM7670_PPP_UART: Sending: AT[0m
+
+[0;32mI (60367) SIM7670_PPP_UART: RX: AT[0m
+OK
+
+[0;32mI (60867) SIM7670_PPP_UART: Total bytes received for this command: 9[0m
+[0;32mI (61867) SIM7670_PPP_UART: Sending: AT+CPIN?[0m
+
+[0;32mI (61917) SIM7670_PPP_UART: RX: AT+CPIN?[0m
++CPIN: READY
+
+OK
+
+[0;32mI (62417) SIM7670_PPP_UART: Total bytes received for this command: 31[0m
+[0;32mI (63417) SIM7670_PPP_UART: Sending: AT+CSQ[0m
+
+[0;32mI (63467) SIM7670_PPP_UART: RX: AT+CSQ[0m
++CSQ: 18,0
+
+OK
+
+[0;32mI (63967) SIM7670_PPP_UART: Total bytes received for this command: 27[0m
+[0;32mI (64967) SIM7670_PPP_UART: Sending: AT+CREG?[0m
+
+[0;32mI (65017) SIM7670_PPP_UART: RX: AT+CREG?[0m
++CREG: 0,5
+
+OK
+
+[0;32mI (65517) SIM7670_PPP_UART: Total bytes received for this command: 29[0m
+[0;32mI (66517) SIM7670_PPP_UART: Sending: AT+CGDCONT?[0m
+
+[0;32mI (66577) SIM7670_PPP_UART: RX: AT+CGDCONT?[0m
++CGDCONT: 1,"IP","simbase","10.217.88.241",,,,,,,,,,,
+
+OK
+
+[0;32mI (67027) SIM7670_PPP_UART: Total bytes received for this command: 75[0m
+[0;32mI (68027) SIM7670_PPP_UART: Modem AT test sequence finished. Moving to PPP DIAL…[0m
+[0;32mI (68027) SIM7670_PPP_UART: Starting PPP DIAL test: ATD*99#[0m
+[0;32mI (68027) SIM7670_PPP_UART: Starting PPP DIAL test: ATD*99#[0m
+[0;32mI (68027) SIM7670_PPP_UART: Sending: ATD*99#[0m
+
+[0;32mI (68087) SIM7670_PPP_UART: RX: ATD*99#[0m
+CONNECT
+
+[0;32mI (68587) SIM7670_PPP_UART: Total bytes received for this command: 19[0m
+[0;32mI (68587) SIM7670_PPP_UART: PPP DIAL command sent, check above for CONNECT.[0m
+[0;32mI (68587) SIM7670_PPP_UART: PPP DIAL command sent. Now in PPP data mode, creating PPP stack...[0m
+[0;32mI (68597) SIM7670_PPP_UART: Creating PPP control block (PPPoS)...[0m
+D (68597) lwip: ppp phase changed[1]: phase=0
+
+[0;32mI (68607) SIM7670_PPP_UART: Starting PPP negotiation (no UART RX bridge yet)...[0m
+D (68607) lwip: ppp_connect[1]: holdoff=0
+
+D (68617) lwip: ppp phase changed[1]: phase=3
+
+D (68617) lwip: pppos_connect: unit 1: connecting
+
+D (68627) lwip: ppp_start[1]
+
+D (68627) lwip: ppp phase changed[1]: phase=6
+
+D (68627) lwip: ppp_send_config[1]
+
+D (68637) lwip: pppos_send_config[1]: out_accm=FF FF FF FF
+
+D (68637) lwip: ppp_recv_config[1]
+
+D (68637) lwip: pppos_recv_config[1]: in_accm=FF FF FF FF
+
+D (68647) lwip: sent [LCP ConfReq id=0x1 <asyncmap 0x0> <magic 0x3997e0e1> <pcomp> <accomp>]
+
+D (68657) lwip: pppos_write[1]: len=24
+
+D (68657) lwip: ppp_start[1]: finished
+
+[0;32mI (68667) SIM7670_PPP_UART: PPP UART RX task started[0m
+[0;32mI (68667) SIM7670_PPP_UART: Modem task: waiting for PPP disconnect / redial request...[0m
+[0;32mI (69667) SIM7670_PPP_UART: PPP RX: got 98 bytes from UART[0m
+D (69667) lwip: pppos_input[1]: got 98 bytes
+
+D (69667) lwip: rcvd [LCP ConfReq id=0x1 <asyncmap 0x0> <auth 0xc223 05> <magic 0xd5c15e0d> <pcomp> <accomp>]
+
+D (69667) lwip: No auth is possible
+
+D (69677) lwip: sent [LCP ConfRej id=0x1 <auth 0xc223 05>]
+
+D (69677) lwip: pppos_write[1]: len=13
+
+D (69687) lwip: rcvd [LCP ConfAck id=0x1 <asyncmap 0x0> <magic 0x3997e0e1> <pcomp> <accomp>]
+
+[0;32mI (70687) SIM7670_PPP_UART: PPP RX: got 47 bytes from UART[0m
+D (70687) lwip: pppos_input[1]: got 47 bytes
+
+D (70687) lwip: rcvd [LCP ConfReq id=0x2 <asyncmap 0x0> <magic 0xd5c15e0d> <pcomp> <accomp>]
+
+D (70687) lwip: sent [LCP ConfAck id=0x2 <asyncmap 0x0> <magic 0xd5c15e0d> <pcomp> <accomp>]
+
+D (70697) lwip: pppos_write[1]: len=24
+
+D (70697) lwip: ppp_netif_set_mtu[1]: mtu=1500
+
+D (70707) lwip: ppp_send_config[1]
+
+D (70707) lwip: pppos_send_config[1]: out_accm=0 0 0 0
+
+D (70717) lwip: ppp_recv_config[1]
+
+D (70717) lwip: pppos_recv_config[1]: in_accm=0 0 0 0
+
+D (70717) lwip: ppp phase changed[1]: phase=9
+
+D (70727) lwip: sent [IPCP ConfReq id=0x1 <compress VJ 0f 01> <addr 0.0.0.0>]
+
+D (70737) lwip: pppos_write[1]: len=20
+
+D (70737) lwip: sent [IPV6CP ConfReq id=0x1 <addr fe80::4840:3fa1:6ce3:2cb1>]
+
+D (70747) lwip: pppos_write[1]: len=18
+
+[0;32mI (71747) SIM7670_PPP_UART: PPP RX: got 71 bytes from UART[0m
+D (71747) lwip: pppos_input[1]: got 71 bytes
+
+D (71747) lwip: rcvd [IPCP ConfReq id=0x1]
+
+D (71747) lwip: sent [IPCP ConfNak id=0x1 <addr 0.0.0.0>]
+
+D (71747) lwip: pppos_write[1]: len=14
+
+D (71757) lwip: rcvd [IPCP ConfRej id=0x1 <compress VJ 0f 01>]
+
+D (71757) lwip: sent [IPCP ConfReq id=0x2 <addr 0.0.0.0>]
+
+D (71767) lwip: pppos_write[1]: len=14
+
+D (71767) lwip: rcvd [IPV6CP ConfReq id=0x1 <addr fe80::f5eb:cd09:a49f:8133>]
+
+D (71777) lwip: sent [IPV6CP ConfAck id=0x1 <addr fe80::f5eb:cd09:a49f:8133>]
+
+D (71787) lwip: pppos_write[1]: len=18
+
+D (71787) lwip: rcvd [IPV6CP ConfAck id=0x1 <addr fe80::4840:3fa1:6ce3:2cb1>]
+
+D (71797) lwip: sif6up[1]: err_code=0
+
+[0;32mI (71797) SIM7670_PPP_UART: PPP status: LINK UP (PPPERR_NONE)[0m
+[0;32mI (71797) SIM7670_PPP_UART: PPP (ppp_netif) IP  : 0.0.0.0[0m
+[0;32mI (71807) SIM7670_PPP_UART: PPP (ppp_netif) GW  : 0.0.0.0[0m
+[0;32mI (71817) SIM7670_PPP_UART: PPP (ppp_netif) MASK: 255.255.255.255[0m
+[0;32mI (71817) SIM7670_PPP_UART: netif_default ptr = 0x3fc96edc, ppp_netif ptr = 0x3fc96edc[0m
+[0;32mI (71827) SIM7670_PPP_UART: PPP (netif_default) IP  : 0.0.0.0[0m
+[0;32mI (71827) SIM7670_PPP_UART: PPP (netif_default) GW  : 0.0.0.0[0m
+[0;32mI (71837) SIM7670_PPP_UART: PPP (netif_default) MASK: 255.255.255.255[0m
+[0;32mI (71847) SIM7670_PPP_UART: PPP status: LINK UP count = 1[0m
+D (71847) lwip: local  LL address fe80::4840:3fa1:6ce3:2cb1
+
+D (71857) lwip: remote LL address fe80::f5eb:cd09:a49f:8133
+
+D (71857) lwip: ppp phase changed[1]: phase=10
+
+[0;32mI (72767) SIM7670_PPP_UART: PPP RX: got 29 bytes from UART[0m
+D (72767) lwip: pppos_input[1]: got 29 bytes
+
+D (72767) lwip: rcvd [IPCP ConfReq id=0x2]
+
+D (72767) lwip: sent [IPCP ConfAck id=0x2]
+
+D (72767) lwip: pppos_write[1]: len=8
+
+D (72777) lwip: rcvd [IPCP ConfNak id=0x2 <addr 10.217.88.241>]
+
+D (72777) lwip: sent [IPCP ConfReq id=0x3 <addr 10.217.88.241>]
+
+D (72787) lwip: pppos_write[1]: len=14
+
+D (73317) lwip: pppos_netif_output[1]: proto=0x57, len = 56
+
+[0;32mI (73787) SIM7670_PPP_UART: PPP RX: got 18 bytes from UART[0m
+D (73787) lwip: pppos_input[1]: got 18 bytes
+
+D (73787) lwip: rcvd [IPCP ConfAck id=0x3 <addr 10.217.88.241>]
+
+D (73787) lwip: Could not determine remote IP address: defaulting to 10.64.64.64
+
+D (73797) lwip: sifvjcomp[1]: VJ compress enable=0 slot=0 max slot=0
+
+D (73797) lwip: sifup[1]: err_code=0
+
+[0;32mI (73807) SIM7670_PPP_UART: PPP status: LINK UP (PPPERR_NONE)[0m
+[0;32mI (73807) SIM7670_PPP_UART: PPP (ppp_netif) IP  : 10.217.88.241[0m
+[0;32mI (73817) SIM7670_PPP_UART: PPP (ppp_netif) GW  : 10.64.64.64[0m
+[0;32mI (73817) SIM7670_PPP_UART: PPP (ppp_netif) MASK: 255.255.255.255[0m
+[0;32mI (73827) SIM7670_PPP_UART: netif_default ptr = 0x3fc96edc, ppp_netif ptr = 0x3fc96edc[0m
+[0;32mI (73837) SIM7670_PPP_UART: PPP (netif_default) IP  : 10.217.88.241[0m
+[0;32mI (73837) SIM7670_PPP_UART: PPP (netif_default) GW  : 10.64.64.64[0m
+[0;32mI (73847) SIM7670_PPP_UART: PPP (netif_default) MASK: 255.255.255.255[0m
+[0;32mI (73847) SIM7670_PPP_UART: PPP status: LINK UP count = 2[0m
+[0;32mI (73857) SIM7670_PPP_UART: PPP status: starting connectivity test task after 2 LINK UPs (current IP string = 10.217.88.241).[0m
+[0;32mI (73867) SIM7670_PPP_UART: PPP test task: waiting 5 seconds before connectivity check...[0m
+D (73867) lwip: local  IP address 10.217.88.241
+
+D (73877) lwip: remote IP address 10.64.64.64
+
+D (77317) lwip: pppos_netif_output[1]: proto=0x57, len = 56
+
+[0;32mI (78887) SIM7670_PPP_UART: PPP test: connecting to 1.1.1.1:80 ...[0m
+D (78887) lwip: pppos_netif_output[1]: proto=0x21, len = 44
+
+D (80137) lwip: pppos_netif_output[1]: proto=0x21, len = 44
+
+[0;32mI (80187) SIM7670_PPP_UART: PPP RX: got 52 bytes from UART[0m
+D (80187) lwip: pppos_input[1]: got 52 bytes
+
+D (80187) lwip: ppp_input[1]: ip in pbuf len=44
+
+[0;32mI (80187) SIM7670_PPP_UART: PPP test: connect() SUCCESS to 1.1.1.1:80[0m
+D (80187) lwip: pppos_netif_output[1]: proto=0x21, len = 40
+
+D (80197) lwip: pppos_netif_output[1]: proto=0x21, len = 40
+
+[0;32mI (80207) SIM7670_PPP_UART: PPP test task finished.[0m
+D (81317) lwip: pppos_netif_output[1]: proto=0x57, len = 56
+
+[0;32mI (81327) SIM7670_PPP_UART: PPP RX: got 151 bytes from UART[0m
+D (81327) lwip: pppos_input[1]: got 151 bytes
+
+D (81327) lwip: ppp_input[1]: ip in pbuf len=44
+
+D (81327) lwip: pppos_netif_output[1]: proto=0x21, len = 40
+
+D (81327) lwip: ppp_input[1]: ip in pbuf len=44
+
+D (81337) lwip: pppos_netif_output[1]: proto=0x21, len = 40
+
+D (81337) lwip: ppp_input[1]: ip in pbuf len=40
+
+D (81347) lwip: pppos_netif_output[1]: proto=0x21, len = 40
+

@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/CMakeFiles/bootloader
+C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/CMakeFiles/bootloader.rule
+C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/CMakeFiles/bootloader-complete.rule
+C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

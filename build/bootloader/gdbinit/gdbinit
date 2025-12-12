@@ -1,0 +1,2 @@
+source C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/bootloader/gdbinit/symbols
+source C:/Work/Projects/ESP-IDF/sim7670_ppp_uart/build/bootloader/gdbinit/connect
