@@ -64,6 +64,60 @@ static void test_ppp_dial(void)
     ESP_LOGI(TAG, "PPP DIAL command sent, check above for CONNECT.");
 }
 
+static bool test_ppp_dial_wait_connect(uint32_t timeout_ms)
+{
+    ESP_LOGI(TAG, "Starting PPP DIAL test: ATD*99# (wait CONNECT)");
+
+    const char *cmd = "ATD*99#\r\n";
+    uart_write_bytes(MODEM_UART_NUM, cmd, strlen(cmd));
+
+    int64_t start = esp_timer_get_time();
+    char acc[512];
+    int acc_len = 0;
+    memset(acc, 0, sizeof(acc));
+
+    while ((esp_timer_get_time() - start) < (int64_t)timeout_ms * 1000) {
+        uint8_t buf[128];
+        int n = uart_read_bytes(MODEM_UART_NUM, buf, sizeof(buf), pdMS_TO_TICKS(100));
+        if (n > 0) {
+            // Append into accumulator (truncate if too big)
+            int copy = n;
+            if (acc_len + copy >= (int)sizeof(acc) - 1) {
+                copy = ((int)sizeof(acc) - 1) - acc_len;
+            }
+            if (copy > 0) {
+                memcpy(&acc[acc_len], buf, copy);
+                acc_len += copy;
+                acc[acc_len] = '\0';
+            }
+
+            // Log raw chunk (same style as before)
+            char tmp[129];
+            int tlen = (n < 128) ? n : 128;
+            memcpy(tmp, buf, tlen);
+            tmp[tlen] = '\0';
+            ESP_LOGI(TAG, "RX: %s", tmp);
+
+            // Success / failure markers
+            if (strstr(acc, "CONNECT") != NULL) {
+                ESP_LOGI(TAG, "Dial success: CONNECT detected");
+                return true;
+            }
+            if (strstr(acc, "NO CARRIER") != NULL ||
+                strstr(acc, "BUSY") != NULL ||
+                strstr(acc, "NO DIALTONE") != NULL ||
+                strstr(acc, "ERROR") != NULL) {
+                ESP_LOGE(TAG, "Dial failed (modem replied with failure): %s", acc);
+                return false;
+            }
+        }
+    }
+
+    ESP_LOGE(TAG, "Dial timeout: CONNECT not seen within %u ms", (unsigned)timeout_ms);
+    return false;
+}
+
+
 void modem_task(void *arg)
 {
     (void)arg;
@@ -96,11 +150,22 @@ void modem_task(void *arg)
 
         ESP_LOGI(TAG, "Modem AT test sequence finished. Moving to PPP DIAL…");
 
-        ESP_LOGI(TAG, "Starting PPP DIAL test: ATD*99#");
-        test_ppp_dial();
+		//==========================================================
+        // ESP_LOGI(TAG, "Starting PPP DIAL test: ATD*99#");
+        // test_ppp_dial();
+        // ESP_LOGI(TAG, "PPP DIAL command sent. Now in PPP data mode, creating PPP stack...");
+		//----------------------------------------------------------
+		bool ok = test_ppp_dial_wait_connect(30000); // 30s
+		if (!ok) {
+			ESP_LOGW(TAG, "Dial did not reach CONNECT; will retry from top of loop");
+			continue;
+		}
 
-        ESP_LOGI(TAG, "PPP DIAL command sent. Now in PPP data mode, creating PPP stack...");
+		ESP_LOGI(TAG, "CONNECT received. Now in PPP data mode, creating PPP stack...");
+		start_ppp_after_connect();
+		//==========================================================
         start_ppp_after_connect();
+		
 
         ESP_LOGI(TAG, "Modem task: waiting for PPP disconnect / redial request...");
         // Block here until PPP callback notifies us about disconnect
