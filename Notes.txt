@@ -11,3 +11,13 @@ idf.py menuconfig
 
 idf.py -p COM5 erase-flash
 
+
+
+
+1. Component config → LWIP → PPP support
+[✔] PPP support
+[✔] Enable PPP debug log output (new)
+[✔] Route LWIP debugs through ESP_LOG interface (new)
+
+2. Component config → LWIP
+TCP/IP Task Stack Size: 3072 → 8192
