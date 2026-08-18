@@ -171,7 +171,7 @@ void start_ppp_after_connect(void)
                 4096, NULL, 6, NULL);
 }
 
-// UART -> PPP receiver task (unchanged)
+// Forward PPP data received from the modem UART into the lwIP PPP stack.
 static void ppp_uart_rx_task(void *arg)
 {
     (void)arg;
