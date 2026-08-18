@@ -54,16 +54,6 @@ static void send_at_command(const char *cmd)
     ESP_LOGI(TAG, "Total bytes received for this command: %d", total);
 }
 
-static void test_ppp_dial(void)
-{
-    ESP_LOGI(TAG, "Starting PPP DIAL test: ATD*99#");
-
-    // This command often returns CONNECT quickly, then PPP binary data starts
-    send_at_command("ATD*99#\r\n");  // allow up to ~10s
-
-    ESP_LOGI(TAG, "PPP DIAL command sent, check above for CONNECT.");
-}
-
 static bool test_ppp_dial_wait_connect(uint32_t timeout_ms)
 {
     ESP_LOGI(TAG, "Starting PPP DIAL test: ATD*99# (wait CONNECT)");
