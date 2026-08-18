@@ -29,7 +29,6 @@ static struct netif ppp_netif;
 
 TaskHandle_t modem_task_handle = NULL;  // to signal redial from PPP callback
 static bool ppp_test_started = false;   // ensure we run the test only once per boot
-static int ppp_link_up_count = 0;       // count PPPERR_NONE events
 
 // Forward declarations
 static void ppp_connectivity_test_task(void *arg);
@@ -111,25 +110,21 @@ static void ppp_status_cb(ppp_pcb *pcb, int err_code, void *ctx)
 		ESP_LOGI(TAG, "PPP (ppp_netif) GW : %s", ip4addr_ntoa(gw4));
 		ESP_LOGI(TAG, "PPP (ppp_netif) MASK: %s", ip4addr_ntoa(msk4));
 
-        ppp_link_up_count++;
-        ESP_LOGI(TAG, "PPP status: LINK UP count = %d", ppp_link_up_count);
+		// Start connectivity test once IPv4 has actually been assigned.
+		if (!ppp_test_started && !ip4_addr_isany_val(*ip4)) {
+			ppp_test_started = true;
 
-        if (!ppp_test_started && ppp_link_up_count >= 2) {
-            ppp_test_started = true;
+			ESP_LOGI(TAG,
+					"PPP IPv4 ready: starting connectivity test (ip=%s)",
+					ip4addr_ntoa(ip4));
 
-            const char *ip_str = ipaddr_ntoa(&ppp_netif.ip_addr);
-            ESP_LOGI(TAG,
-                     "PPP status: starting connectivity test task after %d LINK UPs (current IP string = %s).",
-                     ppp_link_up_count,
-                     ip_str ? ip_str : "(null)");
-
-            xTaskCreate(ppp_connectivity_test_task,
-                        "ppp_test",
-                        4096,
-                        NULL,
-                        5,
-                        NULL);
-        }
+			xTaskCreate(ppp_connectivity_test_task,
+						"ppp_test",
+						4096,
+						NULL,
+						5,
+						NULL);
+		}
         break;
     }
 
