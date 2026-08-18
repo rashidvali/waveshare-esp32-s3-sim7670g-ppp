@@ -188,7 +188,8 @@ static void ppp_uart_rx_task(void *arg)
         int len = uart_read_bytes(MODEM_UART_NUM, buf, sizeof(buf),
                                   pdMS_TO_TICKS(1000));
         if (len > 0) {
-            ESP_LOGI(TAG, "PPP RX: got %d bytes from UART", len);
+            // Debug: enable to observe raw PPP traffic arriving from the modem.
+    		// ESP_LOGI(TAG, "PPP RX: got %d bytes from UART", len);
 
             if (ppp != NULL) {
                 pppos_input_tcpip(ppp, buf, len);
