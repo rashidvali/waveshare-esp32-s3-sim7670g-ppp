@@ -107,15 +107,9 @@ static void ppp_status_cb(ppp_pcb *pcb, int err_code, void *ctx)
         ESP_LOGI(TAG, "netif_default ptr = %p, ppp_netif ptr = %p",
                  (void *)netif_default, (void *)&ppp_netif);
 
-        if (netif_default != NULL) {
-            const ip4_addr_t *ip4_2  = &netif_default->ip_addr.u_addr.ip4;
-            const ip4_addr_t *gw4_2  = &netif_default->gw.u_addr.ip4;
-            const ip4_addr_t *msk4_2 = &netif_default->netmask.u_addr.ip4;
-
-            ESP_LOGI(TAG, "PPP (netif_default) IP  : %s", ip4addr_ntoa(ip4_2));
-            ESP_LOGI(TAG, "PPP (netif_default) GW  : %s", ip4addr_ntoa(gw4_2));
-            ESP_LOGI(TAG, "PPP (netif_default) MASK: %s", ip4addr_ntoa(msk4_2));
-        }
+		ESP_LOGI(TAG, "PPP (ppp_netif) IP : %s", ip4addr_ntoa(ip4));
+		ESP_LOGI(TAG, "PPP (ppp_netif) GW : %s", ip4addr_ntoa(gw4));
+		ESP_LOGI(TAG, "PPP (ppp_netif) MASK: %s", ip4addr_ntoa(msk4));
 
         ppp_link_up_count++;
         ESP_LOGI(TAG, "PPP status: LINK UP count = %d", ppp_link_up_count);
