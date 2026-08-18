@@ -23,7 +23,7 @@ static const char *TAG = "SIM7670_PPP_UART";
 
 #define MODEM_UART_NUM UART_NUM_1
 
-// PPP globals (unchanged, just moved)
+// PPP state
 static ppp_pcb *ppp = NULL;
 static struct netif ppp_netif;
 
@@ -35,7 +35,7 @@ static int ppp_link_up_count = 0;       // count PPPERR_NONE events
 static void ppp_connectivity_test_task(void *arg);
 static void ppp_uart_rx_task(void *arg);
 
-// PPP output callback: PPP -> UART (unchanged)
+// PPP output callback: lwIP PPP -> modem UART
 static u32_t ppp_output_cb(ppp_pcb *pcb, const void *data, u32_t len, void *ctx)
 {
     (void)pcb;
@@ -85,7 +85,7 @@ static void ppp_connectivity_test_task(void *arg)
     vTaskDelete(NULL);
 }
 
-// PPP status callback (unchanged)
+// PPP link-status callback
 static void ppp_status_cb(ppp_pcb *pcb, int err_code, void *ctx)
 {
     (void)pcb;
@@ -156,8 +156,7 @@ static void ppp_status_cb(ppp_pcb *pcb, int err_code, void *ctx)
     }
 }
 
-// Called once after we get CONNECT from the modem (UNCHANGED BEHAVIOR)
-// NOTE: working version creates PPP immediately even if CONNECT not detected — we preserve that.
+// Create and start the PPP stack after the modem has returned CONNECT.
 void start_ppp_after_connect(void)
 {
     if (ppp != NULL) {
@@ -174,7 +173,7 @@ void start_ppp_after_connect(void)
         return;
     }
 
-    ESP_LOGI(TAG, "Starting PPP negotiation (no UART RX bridge yet)...");
+    ESP_LOGI(TAG, "Starting PPP negotiation...");
     pppapi_set_default(ppp);
     pppapi_connect(ppp, 0);
 
