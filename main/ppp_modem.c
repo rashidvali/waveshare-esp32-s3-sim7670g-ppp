@@ -102,14 +102,6 @@ static void ppp_status_cb(ppp_pcb *pcb, int err_code, void *ctx)
         ESP_LOGI(TAG, "PPP (ppp_netif) GW  : %s", ip4addr_ntoa(gw4));
         ESP_LOGI(TAG, "PPP (ppp_netif) MASK: %s", ip4addr_ntoa(msk4));
 
-        extern struct netif *netif_default;
-        ESP_LOGI(TAG, "netif_default ptr = %p, ppp_netif ptr = %p",
-                 (void *)netif_default, (void *)&ppp_netif);
-
-		ESP_LOGI(TAG, "PPP (ppp_netif) IP : %s", ip4addr_ntoa(ip4));
-		ESP_LOGI(TAG, "PPP (ppp_netif) GW : %s", ip4addr_ntoa(gw4));
-		ESP_LOGI(TAG, "PPP (ppp_netif) MASK: %s", ip4addr_ntoa(msk4));
-
 		// Start connectivity test once IPv4 has actually been assigned.
 		if (!ppp_test_started && !ip4_addr_isany_val(*ip4)) {
 			ppp_test_started = true;
