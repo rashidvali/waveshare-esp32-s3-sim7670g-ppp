@@ -43,11 +43,14 @@ static void send_at_command(const char *cmd)
             int copy_len = (n < 256) ? n : 256;
             memcpy(tmp, buf, copy_len);
             tmp[copy_len] = '\0';
-            ESP_LOGI(TAG, "RX: %s", tmp);
+
+            // Debug: enable to inspect raw AT responses from the modem.
+			// ESP_LOGI(TAG, "RX: %s", tmp);
         }
     }
 
-    ESP_LOGI(TAG, "Total bytes received for this command: %d", total);
+    // Debug: enable to inspect AT response byte counts.
+	// ESP_LOGI(TAG, "Total bytes received for this command: %d", total);
 }
 
 static bool test_ppp_dial_wait_connect(uint32_t timeout_ms)
