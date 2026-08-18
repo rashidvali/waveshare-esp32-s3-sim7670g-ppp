@@ -17,8 +17,9 @@
 static const char *TAG = "SIM7670_PPP_UART";
 
 /*
- * Adjust these to your board wiring.
- * For now, we assume UART1 is wired to the SIM7670 module.
+ * Waveshare ESP32-S3-SIM7670G-4G tested UART configuration.
+ * The Waveshare ESP32-S3-SIM7670G-4G board uses UART1
+ * with TX on GPIO18 and RX on GPIO17 for this implementation.
  */
 #define MODEM_UART_NUM        UART_NUM_1
 #define MODEM_TX_GPIO         GPIO_NUM_18   // TX pin to modem

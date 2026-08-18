@@ -150,11 +150,6 @@ void modem_task(void *arg)
 
         ESP_LOGI(TAG, "Modem AT test sequence finished. Moving to PPP DIAL…");
 
-		//==========================================================
-        // ESP_LOGI(TAG, "Starting PPP DIAL test: ATD*99#");
-        // test_ppp_dial();
-        // ESP_LOGI(TAG, "PPP DIAL command sent. Now in PPP data mode, creating PPP stack...");
-		//----------------------------------------------------------
 		bool ok = test_ppp_dial_wait_connect(30000); // 30s
 		if (!ok) {
 			ESP_LOGW(TAG, "Dial did not reach CONNECT; will retry from top of loop");
@@ -163,9 +158,6 @@ void modem_task(void *arg)
 
 		ESP_LOGI(TAG, "CONNECT received. Now in PPP data mode, creating PPP stack...");
 		start_ppp_after_connect();
-		//==========================================================
-        start_ppp_after_connect();
-		
 
         ESP_LOGI(TAG, "Modem task: waiting for PPP disconnect / redial request...");
         // Block here until PPP callback notifies us about disconnect
