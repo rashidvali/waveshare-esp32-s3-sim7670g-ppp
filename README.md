@@ -178,8 +178,9 @@ Detailed documentation is organized into separate files:
 * [SETUP.md](SETUP.md) — hardware and development environment setup
 * [CONFIGURATION.md](CONFIGURATION.md) — ESP-IDF, `menuconfig`, UART, APN, and PPP configuration
 * [HOW_IT_WORKS.md](HOW_IT_WORKS.md) — internal architecture and PPP-over-UART connection flow
+<!--
 * [TROUBLESHOOTING.md](TROUBLESHOOTING.md) — modem, UART, dialing, PPP, IP, and routing troubleshooting
-
+-->
 ## Current Status
 
 The project is under active development.
