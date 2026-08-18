@@ -53,9 +53,9 @@ static void send_at_command(const char *cmd)
 	// ESP_LOGI(TAG, "Total bytes received for this command: %d", total);
 }
 
-static bool test_ppp_dial_wait_connect(uint32_t timeout_ms)
+static bool dial_ppp_wait_connect(uint32_t timeout_ms)
 {
-    ESP_LOGI(TAG, "Starting PPP DIAL test: ATD*99# (wait CONNECT)");
+    ESP_LOGI(TAG, "Dialing: ATD*99# (waiting for CONNECT)");
 
     const char *cmd = "ATD*99#\r\n";
     uart_write_bytes(MODEM_UART_NUM, cmd, strlen(cmd));
@@ -137,9 +137,9 @@ void modem_task(void *arg)
         send_at_command("AT+CGDCONT?\r\n");
         vTaskDelay(pdMS_TO_TICKS(1000));
 
-        ESP_LOGI(TAG, "Modem AT test sequence finished. Moving to PPP DIAL…");
+        ESP_LOGI(TAG, "Modem preflight complete. Starting PPP dial...");
 
-		bool ok = test_ppp_dial_wait_connect(30000); // 30s
+		bool ok = dial_ppp_wait_connect(30000); // 30s
 		if (!ok) {
 			ESP_LOGW(TAG, "Dial did not reach CONNECT; will retry from top of loop");
 			continue;
