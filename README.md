@@ -175,10 +175,10 @@ This makes the PPP startup process easier to inspect and is particularly useful 
 
 Detailed documentation is organized into separate files:
 
-- `SETUP.md` — hardware and development environment setup
-- `CONFIGURATION.md` — ESP-IDF, `menuconfig`, UART, APN, and PPP configuration
-- `HOW_IT_WORKS.md` — internal architecture and PPP-over-UART connection flow
-- `TROUBLESHOOTING.md` — modem, UART, dialing, PPP, IP, and routing troubleshooting
+* [SETUP.md](SETUP.md) — hardware and development environment setup
+* [CONFIGURATION.md](CONFIGURATION.md) — ESP-IDF, `menuconfig`, UART, APN, and PPP configuration
+* [HOW_IT_WORKS.md](HOW_IT_WORKS.md) — internal architecture and PPP-over-UART connection flow
+* [TROUBLESHOOTING.md](TROUBLESHOOTING.md) — modem, UART, dialing, PPP, IP, and routing troubleshooting
 
 ## Current Status
 
