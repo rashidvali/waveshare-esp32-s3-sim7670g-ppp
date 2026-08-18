@@ -10,20 +10,16 @@
 
 #include "ppp_modem.h"
 
-// Keep the same TAG text as the working file
 static const char *TAG = "SIM7670_PPP_UART";
 
-/*
- * UART config must match main.c (same working wiring assumptions)
- */
-#define MODEM_UART_NUM        UART_NUM_1
+// Waveshare ESP32-S3-SIM7670G-4G modem UART
+#define MODEM_UART_NUM UART_NUM_1
 
-// PPP globals / handles live in ppp_modem.c, but we need the handle here too
+// Used by the PPP status callback to notify the modem task when redial is needed.
 extern TaskHandle_t modem_task_handle;
 
 /*
- * Simple helper: send an AT command and log all responses for a short time.
- * (unchanged)
+ * Send an AT command and log all responses for a short time.
  */
 static void send_at_command(const char *cmd)
 {
