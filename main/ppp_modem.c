@@ -48,6 +48,8 @@ static u32_t ppp_output_cb(ppp_pcb *pcb, const void *data, u32_t len, void *ctx)
     return (u32_t)written;
 }
 
+// Example connectivity test.
+// Demonstrates that normal socket APIs work once PPP has a valid IPv4 address.
 static void ppp_connectivity_test_task(void *arg)
 {
     ESP_LOGI(TAG, "PPP test task: waiting 5 seconds before connectivity check...");
