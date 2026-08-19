@@ -64,8 +64,8 @@ void app_main(void)
 
     ESP_LOGI(TAG, "Waveshare ESP32-S3-SIM7670G-4G PPP-over-UART");
 
-    // Raise log level so PPP/lwIP debug messages are visible
-    esp_log_level_set("*", ESP_LOG_DEBUG);
+    // Debug: enable when detailed PPP/lwIP diagnostics are needed.
+    // esp_log_level_set("*", ESP_LOG_DEBUG);
 
     // Initialize the ESP-IDF networking stack required by lwIP/PPP.
     ESP_ERROR_CHECK(esp_netif_init());
