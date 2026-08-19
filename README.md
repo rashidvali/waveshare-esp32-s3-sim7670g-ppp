@@ -183,13 +183,24 @@ Detailed documentation is organized into separate files:
 -->
 ## Current Status
 
-The project is under active development.
+The PPP-over-UART implementation has been tested successfully on the
+**Waveshare ESP32-S3-SIM7670G-4G development board**.
 
-The original implementation successfully established PPP connectivity with the SIM7670G modem on the Waveshare ESP32-S3-SIM7670G-4G board.
+The current implementation successfully:
 
-The code is being reorganized into a cleaner and more reusable connectivity component while preserving the behavior of the proven implementation.
+- communicates with the SIM7670G through UART using AT commands
+- enters PPP data mode using `ATD*99#`
+- establishes an lwIP PPPoS connection
+- obtains an IPv4 address and gateway from the cellular network
+- provides Internet connectivity through standard TCP/IP socket APIs
 
-Because of this ongoing refactoring, the repository should currently be considered a development project rather than a finished production-ready library.
+Version **v0.1.0** represents the first tested and documented public baseline
+of the project.
+
+The implementation is intentionally specific to the Waveshare
+ESP32-S3-SIM7670G-4G development board. Other hardware configurations may
+require changes to UART wiring, GPIO assignments, modem initialization, or
+board-level configuration.
 
 ## Intended Use
 
