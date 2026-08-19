@@ -27,8 +27,11 @@ static const char *TAG = "SIM7670_PPP_UART";
 static ppp_pcb *ppp = NULL;
 static struct netif ppp_netif;
 
-TaskHandle_t modem_task_handle = NULL;  // to signal redial from PPP callback
-static bool ppp_test_started = false;   // ensure we run the test only once per boot
+// Modem task handle used by the PPP status callback to request a redial.
+TaskHandle_t modem_task_handle = NULL;
+
+// Ensure the example connectivity test runs only once per PPP session.
+static bool ppp_test_started = false;
 
 // Forward declarations
 static void ppp_connectivity_test_task(void *arg);
