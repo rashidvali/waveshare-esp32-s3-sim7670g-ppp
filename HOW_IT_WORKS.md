@@ -47,25 +47,30 @@ Once PPP is established, higher-level application code can use the standard ESP-
 
 ## 2. Why PPP over UART?
 
-The SIM7670G can communicate with the ESP32-S3 through UART.
+This project implements cellular Internet connectivity for the
+**Waveshare ESP32-S3-SIM7670G-4G development board using PPP over UART**.
 
-Before an Internet connection is established, UART is used for modem control through AT commands.
+The board and SIM7670G modem may support other communication or networking
+approaches. This project does not attempt to characterize or replace those
+options; it documents the UART-based approach that has been implemented and
+tested here.
 
-After dialing succeeds, the same UART connection becomes a binary PPP data channel.
+With this implementation, the ESP32-S3 initially communicates with the SIM7670G
+over UART using AT commands. After dialing succeeds, the same UART connection
+becomes a binary PPP data channel.
 
-This allows the ESP32-S3's lwIP stack to negotiate and operate an IP connection through the modem.
+PPP allows the ESP32-S3's lwIP stack to negotiate and own the IP connection.
+From the application perspective, the cellular connection then behaves like a
+normal network interface, allowing standard TCP/IP socket-based networking to
+be used.
 
-This project therefore does not use the modem's own HTTP or MQTT AT-command implementations as the primary application networking layer.
+This avoids requiring application protocols such as HTTP or MQTT to be
+implemented through modem-specific AT commands.
 
-Instead:
+In this implementation:
 
-```text
-SIM7670G
-    =
-cellular transport for the ESP32-S3 IP stack
-```
-
-The ESP32-S3 remains responsible for the application's networking protocols.
+**UART provides the communication channel, PPP provides the IP link, and lwIP
+provides the networking stack used by the ESP32-S3 application.**
 
 ## 3. Two UART Operating Modes
 
