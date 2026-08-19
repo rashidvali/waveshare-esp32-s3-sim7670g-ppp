@@ -22,3 +22,6 @@ install_manifest.txt
 # Python virtual envs
 .env/
 venv/
+
+# Local development notes
+Notes.txt
