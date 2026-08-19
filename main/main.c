@@ -62,18 +62,18 @@ void app_main(void)
     }
     ESP_ERROR_CHECK(ret);
 
-    ESP_LOGI(TAG, "SIM7670 PPP UART demo (Stage 2: minimal PPP init)");
+    ESP_LOGI(TAG, "Waveshare ESP32-S3-SIM7670G-4G PPP-over-UART");
 
     // Raise log level so PPP/lwIP debug messages are visible
     esp_log_level_set("*", ESP_LOG_DEBUG);
 
-    /* NEW: initialize networking stack base (needed by lwIP/PPP) */
+    // Initialize the ESP-IDF networking stack required by lwIP/PPP.
     ESP_ERROR_CHECK(esp_netif_init());
     ESP_ERROR_CHECK(esp_event_loop_create_default());
 
     // Initialize UART to talk to the SIM7670
     init_uart_for_modem();
 
-    // Start modem task (same stack/priority as working version)
+    // Start the modem management task.
     xTaskCreate(modem_task, "modem_task", 4096, NULL, 5, NULL);
 }
