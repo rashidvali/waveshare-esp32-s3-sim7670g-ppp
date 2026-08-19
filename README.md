@@ -1,14 +1,16 @@
 # PPP-over-UART Connectivity for the Waveshare ESP32-S3-SIM7670G-4G Development Board
 
-A lightweight ESP-IDF implementation of cellular Internet connectivity using the **SIM7670G modem integrated into the Waveshare ESP32-S3-SIM7670G-4G development board**, with PPP running directly over UART.
+This project provides a tested **PPP-over-UART cellular connectivity
+implementation** for the **Waveshare ESP32-S3-SIM7670G-4G development board**
+using ESP-IDF and lwIP PPPoS.
 
-The project provides a practical foundation for using the board's cellular modem as an Internet interface for ESP32-S3 applications without relying on `esp_modem` or USB-host modem support.
+The implementation communicates with the SIM7670G modem over UART, uses AT
+commands for modem initialization and dialing, and then uses the same UART
+connection as a PPP data channel between the modem and the ESP32-S3.
 
-> **Hardware scope**
->
-> This project is developed and tested specifically with the **Waveshare ESP32-S3-SIM7670G-4G development board**.
->
-> Other development boards may use the same ESP32-S3 + SIM7670 combination, but their UART connections, modem power control, GPIO assignments, and board-level configuration may differ. They are therefore not currently considered supported by this project.
+The board and SIM7670G modem may support other communication or networking
+approaches. This project specifically documents the UART-based approach that
+has been implemented and tested here.
 
 ## Project Goal
 
