@@ -206,7 +206,9 @@ board-level configuration.
 
 ## Intended Use
 
-The project is intended as a cellular connectivity foundation for ESP32-S3 applications that need Internet access through the SIM7670G modem.
+The project is intended as a cellular connectivity foundation for applications
+built on the **Waveshare ESP32-S3-SIM7670G-4G development board** that need
+Internet access through its integrated SIM7670G modem.
 
 Once PPP connectivity is established, higher-level ESP-IDF functionality can use the resulting network interface, including applications such as:
 
